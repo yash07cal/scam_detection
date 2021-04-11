@@ -1,10 +1,8 @@
 <%- include('../partials/header') -%>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
-            
-        </div>
+        
         <div class="col-md-9 col-xs-12">
             <div class="thumbnail">
                 <img class="img-responsive" src= "<%= campground.image %> ">
@@ -22,8 +20,10 @@
                     <% } %>
                 </div>
             </div>
+        </div>
+        <div class="col-md-3">
             <div class="well ">
-                <div class="text-right">
+                <div class="text-center">
                     <a class="btn btn-success" href="/posts/<%= campground._id %>/comments/new ">Add New Comment</a>
                 </div>
                 <hr>
@@ -48,7 +48,7 @@
                     <hr>
                 <% }); %>
             </div>
-        </div> 
+        </div>
     </div>
 </div>
 
