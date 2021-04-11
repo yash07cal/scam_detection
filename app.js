@@ -21,8 +21,8 @@ var commentRoutes     = require("./routes/comments"),
     profileRoutes     = require("./routes/profiles"),
     adminRoutes       = require("./routes/admin");
 
-mongoose.connect("mongodb://localhost/scam_detection",{ useNewUrlParser: true, useUnifiedTopology: true });
-// mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect("mongodb://localhost/scam_detection",{ useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
