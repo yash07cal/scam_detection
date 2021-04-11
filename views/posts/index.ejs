@@ -1,0 +1,44 @@
+<%- include('../partials/header') -%>
+    
+    <div class ="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Scam Detection!</h1>
+                <p>Lets filter out all the fake news and scams together.</p>
+                    <p>
+                        <a class="btn btn-primary" href="/posts/new">Add post for review</a>
+                    </p>
+                
+                <p>
+                    <form action="/posts" method="GET" class="form-inline">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="search" placeholder="search.." >
+                            <button class="btn btn-success">Go!</button> 
+                        </div> 
+                    </form>
+                </p>
+            </div>
+        </header>
+    </div>
+        <div class="container-fluid">
+            <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+                <% campgrounds.forEach(function(camp){ %>
+                    <% if(camp.isApproved){ %>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="thumbnail">
+                                <img class="photu" src=" <%= camp.image %> ">
+                                <div class="caption">
+                                    <h4> <%= camp.title %> </h4>
+                                </div>
+                                <p>
+                                    <a href="/posts/<%= camp._id %>" class="btn btn-info">More Info</a>
+                                </p>
+                            </div>
+                        </div>
+                <% } }); %>
+            </div>
+        </div>
+    
+        
+
+<%- include('../partials/footer') -%>

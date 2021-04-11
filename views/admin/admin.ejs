@@ -1,0 +1,22 @@
+<%- include('../partials/header') -%>
+
+<div class ="container">
+        <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+            <% campgrounds.forEach(function(camp){ %>
+                <% if(!camp.isApproved && camp.location.state.toLowerCase() == currentUser.location.state.toLowerCase()){ %>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="thumbnail">
+                            <img class="photu" src=" <%= camp.image %> ">
+                            <div class="caption">
+                                <h4> <%= camp.title %> </h4>
+                            </div>
+                            <p>
+                                <a href="/admin/<%= camp._id %>" class="btn btn-info">More Info</a>
+                            </p>
+                        </div>
+                    </div>
+            <% } }); %>
+        </div>
+    </div>
+    
+<%- include('../partials/footer') -%>  

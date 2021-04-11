@@ -1,0 +1,27 @@
+<%- include('../partials/header') -%>
+    
+    <div class ="container">
+    
+        <div class="container-fluid">
+            <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+                <% posts.forEach(function(post){ %>
+                <%    if(post.user.id.equals(foundUser._id)){ %>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="thumbnail">
+                                <img class="photu" src=" <%= post.image %> ">
+                                <div class="caption">
+                                    <h4> <%= post.title %> </h4>
+                                </div>
+                                <p>
+                                    <a href="/posts/<%= post._id %>" class="btn btn-info">More Info</a>
+                                </p>
+                            </div>
+                        </div>
+                <%  } }); %>
+            </div>
+        </div>
+    </div>
+        
+
+<%- include('../partials/footer') -%>
+

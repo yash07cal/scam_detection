@@ -1,0 +1,50 @@
+body{
+    background-color: ;
+}
+
+.lcn{
+    margin-bottom: 5px;
+}
+
+.thumbnail img{
+    width: 100%;
+}
+
+.thumbnail{
+    padding: 1px;
+}
+
+#delete{
+    display: inline;
+}
+
+#remove{
+    float: left;
+    margin-right: 10px;
+}
+
+.heading{
+    text-align: center;
+}
+
+.dabba{
+    width: 30%; 
+    margin: 30px auto;
+}
+
+.home:hover {
+    background: #ebebe6;
+}
+
+img.photu{
+    
+    min-height: 200px;
+}
+
+/*#home{*/
+/*    margin-left: 25px;*/
+/*}*/
+
+/*#admin{*/
+/*    margin-right: 5px;*/
+/*}*/
