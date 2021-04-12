@@ -8,10 +8,8 @@ var postSchema = new mongoose.Schema({
         default: false
     },
    image: String,
-   location:{
-        state: String,
-        city: String
-    },
+   state: String,
+   city: String,
    description: String,
    user: {
       id:{

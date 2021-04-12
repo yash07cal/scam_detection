@@ -2,13 +2,36 @@
  #dabba{
      width: 60%;
  }
+ #mb{
+    display: block;
+}
+
+#lp{
+    display: none;
+}
 }
 
 @media screen and (max-width: 600px) {
  #dabba{
      width: 100%;
  }
+#mb{
+    display: block;
 }
+
+#lp{
+    display: none;
+}
+}
+
+.mb.home{
+    display: none;
+}
+
+.lp{
+    display: block;
+}
+
 
 .lcn{
     margin-bottom: 5px;

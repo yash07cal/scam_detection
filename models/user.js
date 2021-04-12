@@ -6,10 +6,9 @@ var UserSchema = new mongoose.Schema({
     username: String,
     password: String,
     email: String,
-    location:{
-        state: String,
-        city: String
-    },
+    state: String,
+    city: String,
+   
     isAdmin: {
         type: "Boolean",
         default: false

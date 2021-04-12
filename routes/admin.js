@@ -20,13 +20,14 @@ router.get("/admin", middleware.isAdmin, function(req, res){
 router.post("/admin", middleware.isLoggedIn,function(req, res){
     var title = req.body.title;
     var image = req.body.image;
-    var location = {city: req.body.city, state: req.body.state};
+    var state = req.body.state;
+    var city  = req.body.city
     var desc = req.body.description;
     var user = {
         id: req.user._id,
         username: req.user.username
     };
-    var newPost = {title: title, image: image, location: location, description: desc, user: user};
+    var newPost = {title: title, image: image, state: state, city: city, description: desc, user: user};
     
     Post.create(newPost, function(err, newlyCreated){
         if(err){

@@ -23,7 +23,7 @@ router.get("/register", function(req, res){
 
 // handle signup logic
 router.post("/register", function(req, res){
-    var newUser = new User({username: req.body.username, name: req.body.name, email: req.body.email, location: {city: req.body.city, state: req.body.state}});
+    var newUser = new User({username: req.body.username, name: req.body.name, email: req.body.email,city: req.body.city, state: req.body.state});
     if(req.body.adminCode === adminCode){
         newUser.isAdmin = true
     }

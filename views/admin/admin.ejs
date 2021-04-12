@@ -3,7 +3,7 @@
 <div class ="container">
         <div class="row text-center" style="display: flex; flex-wrap: wrap;">
             <% campgrounds.forEach(function(camp){ %>
-                <% if(!camp.isApproved && camp.location.state.toLowerCase() == currentUser.location.state.toLowerCase()){ %>
+                <% if(!camp.isApproved && camp.state.toLowerCase() == currentUser.state.toLowerCase()){ %>
                     <div class="col-md-3 col-sm-6">
                         <div class="thumbnail">
                             <img class="photu" src=" <%= camp.image %> ">

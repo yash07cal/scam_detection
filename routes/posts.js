@@ -7,12 +7,12 @@ var express    = require("express"),
     
 //INDEX ROUTE 
 router.get("/", function(req, res){
-    console.log(req.query);
     if(req.query.search){
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-         Post.find({"title": regex}, function(err, allPosts){
+         Post.find({"state": regex}, function(err, allPosts){
                 if(err){
-                        console.log(err);
+                    console.log();
+                    console.log(err);
                     }else{
                          res.render("posts/index", {campgrounds: allPosts});
                     }
@@ -23,12 +23,12 @@ router.get("/", function(req, res){
                 if(err){
                         console.log(err);
                     }else{
+                        
                          res.render("posts/index", {campgrounds: allPosts});
                     }
             });
     }
     
-   
 });
 
 
