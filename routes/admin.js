@@ -17,7 +17,7 @@ router.get("/admin", middleware.isAdmin, function(req, res){
             });
     });
     
-router.post("/admin", middleware.isLoggedIn,function(req, res){
+router.post("/admin", middleware.isAdmin,function(req, res){
     var title = req.body.title;
     var image = req.body.image;
     var state = req.body.state;

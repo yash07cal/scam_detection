@@ -6,13 +6,16 @@
             <h1 class="heading">Login</h1>
             <form action="/login" method="POST">
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="username" name="username">
+                    <input class="form-control" type="text" placeholder="username" name="username" required>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" placeholder="password" name="password">
+                    <input class="form-control" type="password" placeholder="password" name="password" required>
                 </div>
                  <div class="form-group">
                     <button class="btn btn-lg btn-primary btn-block">SUBMIT</button>
+                </div>
+                <div class="form-group">
+                        <a id="" class="btn btn-xs btn-warning btn-block" href="/forgot">FORGOT PASSWORD</a>
                 </div>
             </form>
         

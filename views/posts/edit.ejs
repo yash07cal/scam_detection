@@ -13,8 +13,8 @@
                 </div>
                 <div class="form-group">
                     <label>LOCATION</label>
-                    <input  class="form-control lcn" type="text" value="<%=campground.state%>" name="state">
-                    <input class="form-control" type="text" value="<%=campground.city%>" name="city">
+                    <input  class="form-control lcn" type="text" value="<%=campground.state%>" name="campground[state]">
+                    <input class="form-control" type="text" value="<%=campground.city%>" name="campground[city]">
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="text" placeholder="description" name="campground[description]" value="<%=campground.description%>">

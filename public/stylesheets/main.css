@@ -19,6 +19,7 @@
     display: block;
 }
 
+
 #lp{
     display: none;
 }
@@ -32,6 +33,17 @@
     display: block;
 }
 
+.mystyle{
+    display: none;
+}
+
+#ad{
+    margin-bottom: 3px;
+}
+
+#fogot{
+    margin-left: 15px;
+}
 
 .lcn{
     margin-bottom: 5px;
@@ -61,6 +73,10 @@
 .dabba{
     width: 30%; 
     margin: 30px auto;
+}
+
+.bigDabba{
+    width:50%;
 }
 
 .home:hover {
