@@ -23,8 +23,8 @@ var upload = multer({ storage: storage, fileFilter: imageFilter, limits: {filesi
 var cloudinary = require('cloudinary');
 cloudinary.config({ 
   cloud_name: 'scamdetection', 
-  api_key: "179883427985749", 
-  api_secret: "5Dt6WDV-jIu2sU3pICFQlRdIOzc"
+  api_key: process.env.APIKEY, 
+  api_secret: process.env.APISECRET
 });
   
 
