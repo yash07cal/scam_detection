@@ -4,9 +4,36 @@ var express       = require("express"),
     LocalStrategy = require("passport-local"),
     Post          = require("../models/post"),
     middleware    = require("../middleware"),
+    multer        = require("multer"),
     passport      = require("passport");
     
-    
+router.use("/uploads", express.static("uploads"));
+
+var storage = multer.diskStorage({
+   destination: function(req, file, cb){
+       cb(null,"./uploads/");
+   },
+   filename: function(req, file, cb){
+       cb(null, new Date().toISOString() + file.originalname);
+   }
+});
+
+var fileFilter = function(req, file, cb){
+    // reject
+    if(file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+        cb(null, true);
+    }else{
+        cb(null, false);
+    }
+};
+
+var upload  = multer({
+storage: storage,
+limits: {
+    filesize: 1024 * 1024 * 5
+},
+fileFilter: fileFilter
+});
 
 // Routes
 router.get("/profiles/:id", middleware.isLoggedIn, function(req, res){

@@ -5,7 +5,10 @@ var express       = require("express"),
     Post          = require("../models/post"),
     middleware    = require("../middleware"),
     passport      = require("passport");
-    
+
+
+
+// get route
 router.get("/admin", middleware.isAdmin, function(req, res){
     Post.find({}, function(err, allPosts){
                 if(err || !allPosts){
@@ -16,29 +19,11 @@ router.get("/admin", middleware.isAdmin, function(req, res){
                     }
             });
     });
-    
-router.post("/admin", middleware.isAdmin,function(req, res){
-    var title = req.body.title;
-    var image = req.body.image;
-    var state = req.body.state;
-    var city  = req.body.city
-    var desc = req.body.description;
-    var user = {
-        id: req.user._id,
-        username: req.user.username
-    };
-    var newPost = {title: title, image: image, state: state, city: city, description: desc, user: user};
-    
-    Post.create(newPost, function(err, newlyCreated){
-        if(err){
-            console.log(err);
-        } else{
-                res.redirect("/posts");
-            }
-    });
-});
+// =========================================================================================
 
 
+
+// show page
 router.get("/admin/:id", middleware.isAdmin, function(req, res) {
     Post.findById(req.params.id, function(err, foundPost){
         if(err || !foundPost ){
@@ -52,17 +37,6 @@ router.get("/admin/:id", middleware.isAdmin, function(req, res) {
     });
 });
 
-// router.get("/:id/", middleware.checkCampgroundOwnership, function(req, res){
-   
-//         Campground.findById(req.params.id, function(err, foundCampground){
-//             if(err){
-//                 req.flash("error", "Campground not found!");
-//                 res.render("back");
-//             }
-//             res.render("campgrounds/edit", {campground: foundCampground});
-                
-//         });     
-// });
 
 router.put("/admin/:id", middleware.isAdmin, function(req, res){
     // find and update the corect camoground

@@ -6,13 +6,16 @@
                 <% if(!camp.isApproved && camp.state.toLowerCase() == currentUser.state.toLowerCase()){ %>
                     <div class="col-md-3 col-sm-6">
                         <div class="thumbnail">
-                            <img class="photu" src=" <%= camp.image %> ">
-                            <div class="caption">
-                                <h4> <%= camp.title %> </h4>
-                            </div>
-                            <p>
-                                <a href="/admin/<%= camp._id %>" class="btn btn-info">More Info</a>
-                            </p>
+                            <img style="height: 300px;" class="photu" src=" <%= camp.image %> ">
+                                <div class="caption">
+                                    <h3> <%= camp.title %> </h3>
+                                </div>
+                                <hr style="margin: 3px 3px">
+                                <header style="text-align: left; margin-left: 2px; hover: po"><b><%= camp.user.username %></b>-</header>
+                                <hr style="margin: 2px 0">
+                                <p style="text-align: left;">
+                                    <%= camp.description.substring(0,100) %>...<a href="/admin/<%= camp._id %>">More Info>></a>
+                                </p>
                         </div>
                     </div>
             <% } }); %>

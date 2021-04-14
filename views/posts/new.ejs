@@ -4,12 +4,13 @@
     <div class="row">
         <h1 class="heading">Add New Post</h1>
         <div id="dabba" class="dabba">
-            <form action="/admin" method="POST">
+            <form action="/posts" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Title" name="title">
+                    <input class="form-control" type="text" placeholder="title" name="title">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="imageURL" name="image">
+                    <input style="margin-bottom: 3px;" class="form-control" type="text" placeholder="imageURL or choose image from your device" name="image" >
+                    <input  type = "file" name="imgdevice" accept="image/* required">
                 </div>
                 <div class="form-group">
                     <label>LOCATION</label>

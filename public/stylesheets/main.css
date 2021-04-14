@@ -51,10 +51,12 @@
 
 .thumbnail img{
     width: 100%;
+    
 }
 
 .thumbnail{
     padding: 1px;
+
 }
 
 #delete{
@@ -80,6 +82,7 @@
 }
 
 .home:hover {
+    cursor: default;
     background: #ebebe6;
 }
 

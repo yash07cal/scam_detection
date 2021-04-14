@@ -4,6 +4,8 @@ body {
 
 h1{
   color: black;
+  font-weight: 700;
+	font-size: 4em;
   
 }
 
@@ -49,20 +51,13 @@ h1{
   background-image: url(https://journolink-static.s3.eu-west-1.amazonaws.com/assets/img/blog/bHanqrrNWoRwLOsNzL7Bx0YbdrSFsgw85RUoiSRr.jpeg); 
 }
 .slideshow li:nth-child(2) { 
-  background-image: url(https://static.scientificamerican.com/sciam/cache/file/DFD3D397-B132-4516-9D8D0C7B4F07763B_source.jpg?w=590&h=800&2A4ADDE6-C642-4536-8CBD4821540D9D7F);
+  background-image: url(https://assets.nst.com.my/images/articles/CyberScam_1565668844.jpg);
   animation-delay: 10s; 
 }
 .slideshow li:nth-child(3) { 
-  background-image: url(https://cf-images.us-east-1.prod.boltdns.net/v1/static/3772599298001/9e6a640f-afd3-47c3-8ec8-e9442e23a87d/a805949d-b7ba-4aba-ba49-2e476719cf75/1280x720/match/image.jpg);
-  animation-delay: 20s; 
-}
-.slideshow li:nth-child(4) { 
-  background-image: url(https://assets.nst.com.my/images/articles/CyberScam_1565668844.jpg);
-  animation-delay: 30s; 
-}
-.slideshow li:nth-child(5) { 
   background-image: url(https://www.securitymagazine.com/ext/resources/SEC/2015/1115/SEC1115-cyber-slide2_900px.jpg?1446232808);
-  animation-delay: 40s; 
+  animation-delay: 20s; 
+
 }
 
 @keyframes imageAnimation { 

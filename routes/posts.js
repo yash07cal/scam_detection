@@ -2,8 +2,32 @@ var express    = require("express"),
     router     = express.Router(),
     Post       = require("../models/post"),
     User       = require("../models/user"),
+    multer        = require("multer"),
     middleware = require("../middleware");
-    
+
+
+var storage = multer.diskStorage({
+  filename: function(req, file, callback) {
+    callback(null, Date.now() + file.originalname);
+  }
+});
+var imageFilter = function (req, file, cb) {
+    // accept image files only
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+        return cb(new Error('Only image files are allowed!'), false);
+    }
+    cb(null, true);
+};
+var upload = multer({ storage: storage, fileFilter: imageFilter, limits: {filesize: 1024 * 1024 * 5}});
+
+var cloudinary = require('cloudinary');
+cloudinary.config({ 
+  cloud_name: 'scamdetection', 
+  api_key: "179883427985749", 
+  api_secret: "5Dt6WDV-jIu2sU3pICFQlRdIOzc"
+});
+  
+
     
 //INDEX ROUTE 
 router.get("/", function(req, res){
@@ -36,7 +60,49 @@ router.get("/", function(req, res){
 router.get("/new",middleware.isLoggedIn, function(req, res) {
     res.render("posts/new");
 });
- 
+
+//post route 
+router.post("/", middleware.isLoggedIn, upload.single("imgdevice"), function(req, res, next){
+    var title = req.body.title;
+    var image = req.body.image;
+    var user = {
+        id: req.user._id,
+        username: req.user.username
+    };
+    var state = req.body.state;
+    var city  = req.body.city
+    var desc = req.body.description;
+    if(!req.file){
+        var newPost = {title: title, image: image, state: state, city: city, description: desc, user: user};
+        Post.create(newPost, function(err, newlyCreated){
+            if(err){
+                console.log(err);
+                req.flash("error", err.message)
+                res.redirect("back");
+            } else{
+                    res.redirect("/posts");
+                }
+        });
+    } else{
+        cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
+            if(err){
+                console.log(err);
+            } else{
+                 image = result.secure_url;
+                  var newPost = {title: title, image: image, state: state, city: city, description: desc, user: user};
+                    Post.create(newPost, function(err, newlyCreated){
+                        if(err){
+                            console.log(err);
+                            req.flash("error", err.message)
+                            res.redirect("back");
+                        } else{
+                                res.redirect("/posts");
+                            }
+                    });
+                }
+            });
+        }
+    });
 
 
 // SHOW 
@@ -67,10 +133,10 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
 });
 
 // UPDATE CAMPGROUND ROUTE
-router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
+router.put("/:id", middleware.checkCampgroundOwnership, upload.single("imgdevice"), function(req, res){
     // find and update the corect camoground
-    
-    Post.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedPost){
+    if(!req.file){
+        Post.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedPost){
         if(err){
             res.redirect("back");
         } else{
@@ -78,6 +144,24 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
             res.redirect("/posts/"+ req.params.id);
         }
     });
+    }else{
+        cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
+                if(err){
+                    console.log(err);
+                } else{
+                    req.body.campground.image = result.secure_url;
+                     Post.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedPost){
+                        if(err){
+                            res.redirect("back");
+                        } else{
+                            req.flash("success", "Post successfully updated!");
+                            res.redirect("/posts/"+ req.params.id);
+                        }
+                    });
+                }
+            });
+        }
+    
 });
 
 // DESTROY CAMPGROUND ROUTE
