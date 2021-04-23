@@ -80,7 +80,8 @@ router.post("/", middleware.isLoggedIn, upload.single("imgdevice"), function(req
                 req.flash("error", err.message)
                 res.redirect("back");
             } else{
-                    res.redirect("/posts");
+                req.flash("success", "Post successfully added for review, it'll be featured on home page once reviewed!!")
+                res.redirect("/posts");
                 }
         });
     } else{
@@ -96,7 +97,8 @@ router.post("/", middleware.isLoggedIn, upload.single("imgdevice"), function(req
                             req.flash("error", err.message)
                             res.redirect("back");
                         } else{
-                                res.redirect("/posts");
+                            req.flash("success", "Post successfully added for review, it'll be featured on home page once reviewed!!")
+                            res.redirect("/posts");
                             }
                     });
                 }
