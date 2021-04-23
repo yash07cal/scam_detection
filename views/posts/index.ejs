@@ -32,11 +32,12 @@
                                     <h3> <%= camp.title %> </h3>
                                 </div>
                                 <hr style="margin: 3px 3px">
-                                <header style="text-align: left; margin-left: 2px; hover: po"><b><%= camp.user.username %></b>-</header>
+                                <header style="text-align: left; margin-left: 2px; hover: po"><b><%= camp.user.username %></b></header>
                                 <hr style="margin-right: 65%; margin-top: 1px; margin-bottom: 3px;">
                                 <p style="text-align: left;">
                                     <%= camp.description.substring(0,110) %>...<a href="/posts/<%= camp._id %>"><b>More Info>></b></a>
                                 </p>
+                                <% if(camp.isScam){ %><p>-------    SCAM DETECTED   -------</p> <% } %>
                             </div>
                         </div>
                 <% } }); %>

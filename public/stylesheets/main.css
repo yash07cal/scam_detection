@@ -63,7 +63,7 @@
     display: inline;
 }
 
-#remove{
+.remove{
     float: left;
     margin-right: 10px;
 }

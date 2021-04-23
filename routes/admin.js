@@ -21,8 +21,6 @@ router.get("/admin", middleware.isAdmin, function(req, res){
     });
 // =========================================================================================
 
-
-
 // show page
 router.get("/admin/:id", middleware.isAdmin, function(req, res) {
     Post.findById(req.params.id, function(err, foundPost){
@@ -39,7 +37,7 @@ router.get("/admin/:id", middleware.isAdmin, function(req, res) {
 
 
 router.put("/admin/:id", middleware.isAdmin, function(req, res){
-    // find and update the corect camoground
+    // find and update the post
     
     Post.findByIdAndUpdate(req.params.id, { isApproved: true }, function(err, updatedPost){
         if(err){
@@ -48,6 +46,20 @@ router.put("/admin/:id", middleware.isAdmin, function(req, res){
         } else{
             req.flash("success", "Post approved!!");
             res.redirect("/admin");
+        }
+    });
+});
+
+router.put("/admin/:id/scam", middleware.isAdmin, function(req, res){
+    // find and update the post
+    
+    Post.findByIdAndUpdate(req.params.id, { isScam: true }, function(err, updatedPost){
+        if(err){
+            console.log(err)
+            res.redirect("back");
+        } else{
+            req.flash("success", "scam detected");
+            res.redirect("back");
         }
     });
 });

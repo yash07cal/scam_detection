@@ -7,6 +7,10 @@ var postSchema = new mongoose.Schema({
         type: "Boolean",
         default: false
     },
+   isScam: {
+      type: "Boolean",
+      default: false
+   },
    image: String,
    state: String,
    city: String,

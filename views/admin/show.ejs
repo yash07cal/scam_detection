@@ -6,18 +6,23 @@
             <div class="thumbnail">
                 <img class="img-responsive" src= "<%= campground.image %> ">
                 <div class="caption">
-                    <h4 class="pull-right"><%= campground.city %>, <%= campground.state.toUpperCase() %></h4>
+                    <h4 class="pull-right"><%= campground.city %> <% if(campground.city && campground.state){ %>, <% } %> <%= campground.state.toUpperCase() %></h4>
                     <h3> <a><%= campground.title%></a> </h3>
                     <p> <%= campground.description%> </p>
                     <p><em> Posted by <strong><%= campground.user.username%></strong> </em></p>
                     
                     <% if(currentUser && campground.user.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){%>
                         <div>
-                            <form id="remove" action="/admin/<%= campground._id %>?_method=PUT" method="POST">
+                            <form class="remove" action="/admin/<%= campground._id %>?_method=PUT" method="POST">
                                 <button class="btn btn-success btn-xs">Approve</button>
                             </form>
+                            <% if(!campground.isScam){ %>
+                            <form class="remove" action="/admin/<%= campground._id %>/scam?_method=PUT" method="POST">
+                                <button class="btn btn-danger btn-xs">Scam</button>
+                            </form>
+                            <% } %>
                             <form  action="/admin/<%= campground._id %>?_method=DELETE" method="POST">
-                                <button class="btn btn-danger btn-xs">Delete</button>
+                                <button class="btn btn-warning btn-xs">Delete</button>
                             </form>
                         </div>
                     <% } %>
