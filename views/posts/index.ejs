@@ -35,7 +35,7 @@
                                 <div class="caption">
                                     <h3> <%= camp.title %> </h3>
                                 </div>
-                                <hr style="margin: 3px 3px">
+                                <hr style="margin: 3px 0">
                                 <header style="text-align: left; margin-left: 2px; hover: po"><b><%= camp.user.username %></b></header>
                                 <hr style="margin-right: 65%; margin-top: 1px; margin-bottom: 3px;">
                                 <section>
@@ -44,14 +44,16 @@
                                         <button style="background:none;" class="read">Read More</button><% } %>
                                     </div>
                                 </section>
-                                <% if(camp.isScam){ %><p style="background: red; margin: 5px 0;">-------    SCAM DETECTED   -------</p> <% } %>
-                                <form class="form-inline" action="/posts/ <%= camp._id %>/comments" method="POST">
-                                    <div class="form-group">
-                                        <input style="border: none; outline: none;" class="form-control" type="text" placeholder="Add a comment.." name="comment[text]">
-                                        <button class="btn btn-sm btn-success">POST</button>
+                                <% if(camp.description){ %><hr style="margin: 3px 0;"> <% }%>
+                                
+                                <form style="margin: 5px 0;" class="form-group" action="/posts/ <%= camp._id %>/comments" method="POST">
+                                    <div style="margin: 0;" class="form-group">
+                                        <input style="border: none; outline: none; width: 70%; float: left; height: 20px;" class="form-" type="text" placeholder="Add a comment.." name="comment[text]">
+                                        <button style="background: none; border: none; outline: none; padding-top: 0; line-height: 100%; color: #e6cbd4;" class="btn btn-sm btn-success">POST</button>
                                     </div>
                                 </form>
-                                <a style="background: #d5d0d0; border: none; border-radius: 0px;" class="btn btn-primary btn-block" href="/posts/<%= camp._id %>"><b>All Comments</b></a>
+                                <hr style="margin: 3px 0;">
+                                <a style="background: none; border: none; border-radius: 0px; padding-left: 0;  color: #dfdcdb;" class="btn btn-primary btn-block" href="/posts/<%= camp._id %>"><b>View all Comments</b></a>
                                 
                             </div>
                         </div>
