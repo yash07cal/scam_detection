@@ -96,6 +96,20 @@ img.photu{
     margin-bottom: 5px;
 }
 
+.more{
+    display: none;
+}
+
+.read{
+    border: none;
+    outline: none;
+    color: blue;
+}
+
+.post{
+    text-align: justify;
+}
+
 /*#home{*/
 /*    margin-left: 25px;*/
 /*}*/

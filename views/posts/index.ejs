@@ -25,7 +25,6 @@
                 <% campgrounds.forEach(function(camp){ %>
                     <% if(camp.isApproved){ %>
                         <div class="col-md-3 col-sm-12">
-                                
                             <div class="thumbnail">
                                 <img style="height: 300px;" class="photu" src=" <%= camp.image %> ">
                                 <div class="caption">
@@ -34,16 +33,40 @@
                                 <hr style="margin: 3px 3px">
                                 <header style="text-align: left; margin-left: 2px; hover: po"><b><%= camp.user.username %></b></header>
                                 <hr style="margin-right: 65%; margin-top: 1px; margin-bottom: 3px;">
-                                <p style="text-align: left;">
-                                    <%= camp.description.substring(0,110) %>...<a href="/posts/<%= camp._id %>"><b>More Info>></b></a>
-                                </p>
+                                <section>
+                                    <div class="post">
+                                        <%=camp.description.substring(0,110)%><% if(camp.description.length > 110){ %><span class="dots">...</span><span class="more"><%=camp.description.substring(110)%></span>
+                                        <button class="read">Read More</button><% } %>
+                                    </div>
+                                </section>
                                 <% if(camp.isScam){ %><p>-------    SCAM DETECTED   -------</p> <% } %>
+                                <form class="form-inline" action="/posts/ <%= camp._id %>/comments" method="POST">
+                                    <div class="form-group">
+                                        <input style="border: none; outline: none;" class="form-control" type="text" placeholder="Add a comment.." name="comment[text]">
+                                        <button class="btn btn-sm btn-success">POST</button>
+                                    </div>
+                                </form>
+                                <a style="background: black;" class="btn btn-primary btn-block" href="/posts/<%= camp._id %>"><b>All Comments</b></a>
+                                
                             </div>
                         </div>
+                            
                 <% } }); %>
             </div>
         </div>
     
-        
-
+<script>
+    $(document).ready(function(){
+       $(".read").click(function(){
+           $(this).prev().toggle();
+           $(this).siblings('.dots').toggle();
+           if($(this).text()=='Read More'){
+               $(this).text('Read Less');
+           }else{
+                $(this).text('Read More');  
+           }
+       }); 
+    });
+</script>
+ 
 <%- include('../partials/footer') -%>

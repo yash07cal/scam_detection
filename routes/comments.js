@@ -51,7 +51,8 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                     
                    
                     // redirect on show page of that campground
-                    res.redirect('/posts/'+post._id); 
+                    // '/posts/'+post._id
+                    res.redirect("back"); 
                     
                 }
                 
