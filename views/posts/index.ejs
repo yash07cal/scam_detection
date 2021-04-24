@@ -36,7 +36,7 @@
                                 <section>
                                     <div class="post">
                                         <%=camp.description.substring(0,110)%><% if(camp.description.length > 110){ %><span class="dots">...</span><span class="more"><%=camp.description.substring(110)%></span>
-                                        <button class="read">Read More</button><% } %>
+                                        <button style="background:none;" class="read">Read More</button><% } %>
                                     </div>
                                 </section>
                                 <% if(camp.isScam){ %><p>-------    SCAM DETECTED   -------</p> <% } %>
