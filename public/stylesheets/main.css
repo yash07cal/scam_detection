@@ -1,3 +1,7 @@
+body{
+    background: black;    
+}
+
 @media screen and (max-width: 992px) {
  #dabba{
      width: 60%;
