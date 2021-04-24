@@ -44,7 +44,7 @@
                                         <button style="background:none;" class="read">Read More</button><% } %>
                                     </div>
                                 </section>
-                                <% if(camp.isScam){ %><p>-------    SCAM DETECTED   -------</p> <% } %>
+                                <% if(camp.isScam){ %><p style="background: red; margin: 5px 0;">-------    SCAM DETECTED   -------</p> <% } %>
                                 <form class="form-inline" action="/posts/ <%= camp._id %>/comments" method="POST">
                                     <div class="form-group">
                                         <input style="border: none; outline: none;" class="form-control" type="text" placeholder="Add a comment.." name="comment[text]">
