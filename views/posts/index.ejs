@@ -37,7 +37,7 @@
                                     <h3><%= camp.title %></h3>
                                 </div>
                                 <hr style="margin: 3px 0">
-                                <header style="text-align: left; margin-left: 2px; float "><b><a><%= camp.user.username %></a></b><span style="font-size: small;" class="pull-right"><%= camp.created.toDateString() %></span></header>
+                                <header style="text-align: left; margin-left: 2px; float "><b><a><%= camp.user.username %></a></b><span style="font-size: small;" class="pull-right"><em><%= camp.created.toDateString() %></em></span></header>
                                 
                                 <%if(camp.description){ %> <hr style="margin: 3px 0"> <% }%>
                                 <section>
