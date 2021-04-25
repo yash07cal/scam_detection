@@ -7,6 +7,7 @@
                 <img class="img-responsive" src= "<%= campground.image %> ">
                 <div class="caption">
                     <h4 class="pull-right"><%= campground.city %> <% if(campground.city && campground.state){ %>, <% } %> <%= campground.state.toUpperCase() %></h4>
+                    <span class=><em style="font-size: small;"><%= campground.created.toDateString() %></em></span>
                     <h3> <a><%= campground.title%></a> </h3>
                     <p> <%= campground.description%> </p>
                     <p><em> Posted by <strong><%= campground.user.username%></strong> </em></p>

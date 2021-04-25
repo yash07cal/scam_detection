@@ -37,19 +37,19 @@
                                     <h3><%= camp.title %></h3>
                                 </div>
                                 <hr style="margin: 3px 0">
-                                <header style="text-align: left; margin-left: 2px; float "><b><a><%= camp.user.username %></a></b><span class="pull-right"><em style="font-size: small;"><%= camp.created.toDateString() %></em></span></header>
+                                <header style="text-align: left; margin-left: 2px; float "><b><a><%= camp.user.username %></a></b><span style="font-size: small;" class="pull-right"><%= camp.created.toDateString() %></span></header>
                                 
                                 <%if(camp.description){ %> <hr style="margin: 3px 0"> <% }%>
                                 <section>
                                     <div class="post">
-                                        <em><%=camp.description.substring(0,120)%></em><% if(camp.description.length > 120){ %><span class="dots">...</span><span class="more"><em><%=camp.description.substring(120)%></em></span>
+                                        <%=camp.description.substring(0,120)%><% if(camp.description.length > 120){ %><span class="dots">...</span><span class="more"><%=camp.description.substring(120)%></span>
                                         <button style="background:none; padding-left: 0;" class="read">Read More</button><% } %>
                                     </div>
                                 </section>
                                 <hr style="margin: 3px 0 6px 0;">
                                 <form style="margin: 5px 0;" class="form-group" action="/posts/ <%= camp._id %>/comments" method="POST">
                                     <div style="margin: 0;" class="form-group">
-                                        <input style="border: none; outline: none; width: 70%; float: left; height: 20px;" class="form-" type="text" placeholder="Add a comment.." name="comment[text]">
+                                        <input style="border: none; outline: none; width: 70%; float: left; height: 20px;" class="form-" type="text" placeholder="Add a comment.." name="comment[text]" required>
                                         <button style="background: none; border: none; outline: none; padding-top: 0; line-height: 100%; color: #e6cbd4; width: 30%; padding-right: 2px; text-align: right;" class="btn btn-sm btn-success">POST</button>
                                     </div>
                                 </form>
