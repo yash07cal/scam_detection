@@ -1,40 +1,12 @@
 <%- include('../partials/header') -%>
-<!--<style>-->
-<!--    body{-->
-<!--        background: black;-->
-<!--    }-->
-<!--</style>-->
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        
-        <div class="col-md-9 col-xs-12">
-            <div class="thumbnail">
-                <img class="img-responsive" src= "<%= campground.image %> ">
-                <div class="caption">
-                    <h4 class="pull-right"><%= campground.city %>, <%= campground.state.toUpperCase() %></h4>
-                    <h3> <a><%= campground.title%></a> </h3>
-                    <p> <%= campground.description%> </p>
-                    <p><em> Posted by <strong><%= campground.user.username%></strong> </em></p>
-                    
-                    <% if(currentUser && campground.user.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){%>
-                        <a class="btn btn-warning" href="/posts/<%= campground._id%>/edit">Edit</a>
-                        <form id="delete" action="/posts/<%= campground._id %>?_method=DELETE" method="POST">
-                            <button class="btn btn-danger">Delete</button>
-                        </form>
-                    <% } %>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-xs-12">
-            <div class="well">
-                <div class="text-center">
-                    <a class="btn btn-success" href="/posts/<%= campground._id %>/comments/new ">Add New Comment</a>
-                </div>
-                <hr>
-                <% campground.comments.forEach(function(comment){ %>
-                    <div class="row">
-                        <div class="col-md-12">
+        <div class="col-md-12 col-xs-12">
+            <% if(campground.comments.length==0){ %>
+                    <h1 style="text-align: center;">NO COMMENTS YET!!</h1>
+            <% } else{ %>
+                    <% campground.comments.forEach(function(comment){ %>
                             <strong><%=comment.user.username%></strong>
                             <% if(currentUser && comment.user.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>    
                                 <div class="pull-right">
@@ -47,12 +19,11 @@
                             <p> 
                                 <%=comment.text%>
                             </p>
-                            
-                        </div>
-                    </div>
-                    <hr id="hrr">
-                <% }); %>
-            </div>
+                            <hr id="hrr">
+                <% });} %>
+                <div class="text-center">
+                    <a class="btn btn-success" href="/posts/<%= campground._id %>/comments/new ">Add New Comment</a>
+                </div>
         </div>
     </div>
 </div>

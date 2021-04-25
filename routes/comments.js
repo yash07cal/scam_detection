@@ -114,5 +114,10 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, re
    }); 
 });
 
+// SHOW ALL COMMENTS
+// router.get("/showComments", function(req, res){
+//   res.render("comments/showComments"); 
+// });
+
 
 module.exports = router;
