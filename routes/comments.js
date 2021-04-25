@@ -98,7 +98,7 @@ router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
         if(err){
             res.redirect("back");
         } else{
-            res.redirect("back");
+            res.redirect("/posts/"+ID);
         }
     });
 });
