@@ -26,7 +26,7 @@
                
                 <% var sortedCampgrounds = campgrounds.slice().sort((a, b) => b.created.getTime() - a.created.getTime()) %>
                 <% sortedCampgrounds.forEach(function(camp){ %>
-                <%= camp.created.getTime() %>
+                
                     <% if(camp.isApproved){ %>
                         <div class="col-md-3 col-sm-12">
                             <div class="thumbnail">
