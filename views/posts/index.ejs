@@ -1,9 +1,5 @@
 <%- include('../partials/header') -%>
-<!--<style>-->
-<!--    body{-->
-<!--        background: black;-->
-<!--    }-->
-<!--</style>-->
+
     
     <div class ="container-fluid">
         <header class="jumbotron">
@@ -12,6 +8,7 @@
                 <p>Lets filter out all the fake news and scams together.</p>
                     <p>
                         <a class="btn btn-primary" href="/posts/new">Add post for review</a>
+                        <span><%= new Date();  %></span>
                     </p>
                 
                 <p>
@@ -37,7 +34,14 @@
                                     <h3><%= camp.title %></h3>
                                 </div>
                                 <hr style="margin: 3px 0">
-                                <header style="text-align: left; margin-left: 2px; float "><b><a><%= camp.user.username %></a></b><span style="font-size: small;" class="pull-right"><em><%= camp.created.toDateString() %></em></span></header>
+                                <% var dateUTc = new Date(camp.created); %>
+                                <% var dateUTC = dateUTc.getTime(); %>
+                                <% var dateIST = new Date(dateUTC); %>
+                                <% dateIST.setHours(dateIST.getHours() + 5); %> 
+                                <% dateIST.setMinutes(dateIST.getMinutes() + 30); %>
+                                <% var tarik = dateIST.toUTCString(); %>
+                                     
+                                <header style="text-align: left; margin-left: 2px; float "><b><a><%= camp.user.username %></a></b><span style="font-size: small;" class="pull-right"><em><%= tarik.substring(0,16) %> <%= tarik.substring(17,22) %></em></span></header>
                                 
                                 <%if(camp.description){ %> <hr style="margin: 3px 0"> <% }%>
                                 <section>

@@ -31,6 +31,8 @@ cloudinary.config({
     
 //INDEX ROUTE 
 router.get("/", function(req, res){
+    
+    
     if(req.query.search){
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
          Post.find({"state": regex}, function(err, allPosts){
