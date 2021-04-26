@@ -15,7 +15,7 @@ var postSchema = new mongoose.Schema({
    state: String,
    city: String,
    description: String,
-   created: {type: Date, default: new Date()},
+   created: Date,
    user: {
       id:{
          type: mongoose.Schema.Types.ObjectId,

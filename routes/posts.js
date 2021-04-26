@@ -75,8 +75,9 @@ router.post("/", middleware.isLoggedIn, upload.single("imgdevice"), function(req
     var state = req.body.state;
     var city  = req.body.city
     var desc = req.body.description;
+    var created = Date.now();
     if(!req.file){
-        var newPost = {title: title, image: image, state: state, city: city, description: desc, user: user};
+        var newPost = {title: title, image: image, state: state, city: city, description: desc, user: user, created: created};
         Post.create(newPost, function(err, newlyCreated){
             if(err){
                 console.log(err);
@@ -93,7 +94,7 @@ router.post("/", middleware.isLoggedIn, upload.single("imgdevice"), function(req
                 console.log(err);
             } else{
                  image = result.secure_url;
-                  var newPost = {title: title, image: image, state: state, city: city, description: desc, user: user};
+                  var newPost = {title: title, image: image, state: state, city: city, description: desc, user: user, created: created};
                     Post.create(newPost, function(err, newlyCreated){
                         if(err){
                             console.log(err);
@@ -118,8 +119,7 @@ router.get("/:id", function(req, res) {
             console.log(err);
             res.redirect("back");
         } else{
-               
-                res.render("posts/show", {campground: foundPost});
+             res.render("posts/show", {campground: foundPost});
         }       
     });
 });
