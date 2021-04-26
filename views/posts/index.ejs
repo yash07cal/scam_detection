@@ -33,7 +33,7 @@
                                 <img style="height: 300px;" class="photu" src=" <%= camp.image %> ">
                                 <span style="font-size: x-small;" class="pull-right"><em><%=camp.city.charAt(0).toUpperCase() + camp.city.slice(1) %></em></span>
                                 <div class="caption">
-                                    <% if(camp.isScam){%> <h3 style="text-decoration: line-through red; text-decoration-thickness: 10%; margin: 0 0 4px 0;"><%= camp.title %></h3><header style="background: red; color: black;"><i class="exclamation triangle icon"></i> FAKE!!</header> <% } else{ %> <h3><%= camp.title %></h3> <% } %>
+                                    <% if(camp.isScam){%> <h3 style="text-decoration: line-through ; text-decoration-thickness: 10%; margin: 0 0 4px 0;"><%= camp.title %></h3><header style="background: red; color: black;"><i class="exclamation triangle icon"></i> FAKE!!</header> <% } else{ %> <h3><%= camp.title %></h3> <% } %>
                                     
                                 </div>
                                 <hr style="margin: 3px 0">
