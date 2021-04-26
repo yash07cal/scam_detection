@@ -40,6 +40,7 @@ router.get("/", function(req, res){
                     console.log();
                     console.log(err);
                     }else{
+                        
                          res.render("posts/index", {campgrounds: allPosts});
                     }
             });

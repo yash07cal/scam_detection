@@ -23,7 +23,10 @@
     </div>
         <div class="container-fluid">
             <div class="row text-center" style="display: flex; flex-wrap: wrap;">
-                <% campgrounds.forEach(function(camp){ %>
+               
+                <% var sortedCampgrounds = campgrounds.slice().sort((a, b) => b.created.getTime() - a.created.getTime()) %>
+                <% sortedCampgrounds.forEach(function(camp){ %>
+                <%= camp.created.getTime() %>
                     <% if(camp.isApproved){ %>
                         <div class="col-md-3 col-sm-12">
                             <div class="thumbnail">
