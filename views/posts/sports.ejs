@@ -1,11 +1,21 @@
 <%- include('../partials/header') -%>
 
 <div class="container-fluid">
+    
+    <% var sortedCampgrounds = campgrounds.slice().sort((a, b) => b.created.getTime() - a.created.getTime()); var x= []; %>
+    <% sortedCampgrounds.forEach(function(camp){ %>
+    <%  if(network.run(camp.title)=="sports"){ x.push(camp.title);};})%>
+    <% if(x.length === 0){ %>
+    <div style="text-align: center;" class="ui huge header">No news yet</div>
+    
+    <% }else{ %>
+    
+    <% sortedCampgrounds.forEach(function(camp){ %>
     <div style="text-align: center; margin-bottom: 20px;" class="ui huge header">Sports</div>
+    <hr>
             <div class="row text-center" style="display: flex; flex-wrap: wrap;">
                
-                <% var sortedCampgrounds = campgrounds.slice().sort((a, b) => b.created.getTime() - a.created.getTime()) %>
-                <% sortedCampgrounds.forEach(function(camp){ %>
+                
                 <% if(network.run(camp.title)=="sports"){ %>
                     <% if(camp.isApproved){ %>
                     
@@ -14,9 +24,9 @@
                                 <img style="height: 300px;" class="photu" src=" <%= camp.image %> ">
                                 <span style="font-size: x-small;" class="pull-right"><em><%=camp.city.charAt(0).toUpperCase() + camp.city.slice(1) %></em></span>
                                 <div class="caption">
-                                    <% if(camp.isScam){%> <h3 style="margin: 0 0 4px 0;"><%= camp.title %></h3><header style="background: red; color: black; padding: 3px 3px;"><i class="exclamation triangle icon"></i> FAKE!!</header> <% } else{ %> <h3><%= camp.title %></h3> <% } %>
-                                    
+                                   <h3><%= camp.title %></h3>
                                 </div>
+                                <% if(camp.isScam){ %><header style="background: red; color: black; padding: 3px 3px;"><i class="exclamation triangle icon"></i> scaMDetected</header> <% } %>
                                 <hr style="margin: 3px 0">
                                 <% var dateUTc = new Date(camp.created); %>
                                 <% var dateUTC = dateUTc.getTime(); %>
@@ -47,7 +57,7 @@
                             </div>
                         </div>
                             
-                <% } } }); %>
+                <% } } });} %>
             </div>
         </div>
         

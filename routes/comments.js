@@ -52,6 +52,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                    
                     // redirect on show page of that campground
                     // '/posts/'+post._id
+                    req.flash("success", "comment successfully added!");
                     res.redirect("back"); 
                     
                 }

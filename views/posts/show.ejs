@@ -9,24 +9,6 @@
                     <h1 style="text-align: center;">NO COMMENTS YET!!</h1>
             <% } else{ %>
                     <% campground.comments.forEach(function(comment){ %>
-                    
-                        <% const threshold = 0.5; var word;%>
-                          
-                        <% toxicity.load(threshold).then((model) => { %>
-                        <%   word = [comment.text]; %>
-                        <%   model.classify(word).then(function(predictions){ %>
-                        <%    console.log(JSON.stringify(predictions[6], null, 1)); %>
-                    
-                        <%  if(predictions[6].results[0].match){ %>
-                        <%    console.log(predictions[6].label) %>
-                        <%   }else{ %>
-                        <%   console.log('no'); %>
-                        <% } }); }); %>
-                              
-                              
-                            
-                          
-                    
                             <strong><%=comment.user.username%></strong>
                             <% if(currentUser && comment.user.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>    
                                 <div class="pull-right">
