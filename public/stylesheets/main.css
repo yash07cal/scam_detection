@@ -123,8 +123,12 @@ img.photu{
      background: none; 
 }
 
-.ui.menu .item {
-    margin-right: 8%;
+/*.ui.menu .item {*/
+/*    margin-right: 8%;*/
+/*}*/
+
+#patti{
+    padding: 0;
 }
 /*#home{*/
 /*    margin-left: 25px;*/
