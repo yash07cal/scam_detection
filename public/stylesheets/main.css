@@ -113,6 +113,19 @@ img.photu{
     text-align: justify;
 }
 
+.ui.icon.input>input{padding-right:0!important}
+
+.ui.inverted.menu.item{
+    margin-right: 10%;
+}
+
+.ui.inverted.menu .item:before {
+     background: none; 
+}
+
+.ui.menu .item {
+    margin-right: 8%;
+}
 /*#home{*/
 /*    margin-left: 25px;*/
 /*}*/

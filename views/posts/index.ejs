@@ -1,8 +1,8 @@
 <%- include('../partials/header') -%>
 
     
-    <div class ="container-fluid">
-        <header class="jumbotron">
+    <div class ="container-fluid" >
+        <header class="jumbotron" style="margin: 0;">
             <div class="container">
                 <h1>Scam Detection!</h1>
                 <p>Lets filter out all the fake news and scams together.</p>
@@ -13,14 +13,33 @@
                 <p>
                     <form action="/posts" method="GET" class="form-inline">
                         <div class="form-group">
-                            <input class="form-control" type="text" name="search" placeholder="search for your state" >
-                            <button class="btn btn-success">Go!</button> 
+                            <div class="ui icon input">
+                                <input style="border: none; width: 180px;" type="text" name="search" placeholder="Search for your state...">
+                                <button style="border: none; background: white;" class=""><i type="submit" class="search link icon"></i></button>
+                            </div>
+                             
                         </div> 
                     </form>
                 </p>
             </div>
         </header>
+       <div style="margin: 0 0 10px 0;" class="ui inverted menu">
+           <div class="container">
+                <a class="item">
+                India
+              </a>
+              <a class="item" href="/posts/category/world">
+                International
+              </a>
+              <a class="item" href="/posts/category/sports">
+                Sports
+              </a>
+           </div>
+         
+          
+        </div>
     </div>
+    
         <div class="container-fluid">
             <div class="row text-center" style="display: flex; flex-wrap: wrap;">
                

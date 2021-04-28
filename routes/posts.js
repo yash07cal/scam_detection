@@ -2,9 +2,23 @@ var express    = require("express"),
     router     = express.Router(),
     Post       = require("../models/post"),
     User       = require("../models/user"),
-    multer        = require("multer"),
+    multer     = require("multer"),
+    brain      = require('brain.js'),
     middleware = require("../middleware");
+    
 
+const data = require('../dataSet.json');
+
+const network = new brain.recurrent.LSTM();
+
+const trainingData = data.map(item => ({
+  input: item.title,
+  output: item.category
+}));
+
+network.train(trainingData, {
+    iterations: 300
+});
 
 var storage = multer.diskStorage({
   filename: function(req, file, callback) {
@@ -41,7 +55,7 @@ router.get("/", function(req, res){
                     console.log(err);
                     }else{
                         
-                         res.render("posts/index", {campgrounds: allPosts});
+                        res.render("posts/index", {campgrounds: allPosts, network: network});
                     }
             });
     } else{
@@ -50,8 +64,7 @@ router.get("/", function(req, res){
                 if(err){
                         console.log(err);
                     }else{
-                        
-                         res.render("posts/index", {campgrounds: allPosts});
+                        res.render("posts/index", {campgrounds: allPosts, network: network});
                     }
             });
     }
@@ -122,6 +135,30 @@ router.get("/:id", function(req, res) {
              res.render("posts/show", {campground: foundPost});
         }       
     });
+});
+
+router.get("/category/world", function(req, res) {
+    
+    Post.find({}, function(err, allPosts){
+                if(err){
+                        console.log(err);
+                    }else{
+                        res.render("posts/world", {campgrounds: allPosts, network: network});
+                        
+                    }
+            });
+});
+
+router.get("/category/sports", function(req, res) {
+    
+    Post.find({}, function(err, allPosts){
+                if(err){
+                        console.log(err);
+                    }else{
+                        res.render("posts/sports", {campgrounds: allPosts, network: network});
+                        
+                    }
+            });
 });
 
 // EDIT CAMPGROUND ROUTE
