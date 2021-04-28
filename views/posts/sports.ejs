@@ -1,23 +1,18 @@
 <%- include('../partials/header') -%>
 
 <div class="container-fluid">
-    
     <% var sortedCampgrounds = campgrounds.slice().sort((a, b) => b.created.getTime() - a.created.getTime()); var x= []; %>
     <% sortedCampgrounds.forEach(function(camp){ %>
     <%  if(network.run(camp.title)=="sports"){ x.push(camp.title);};})%>
     <% if(x.length === 0){ %>
     <div style="text-align: center;" class="ui huge header">No news yet</div>
-    
     <% }else{ %>
     <div style="text-align: center; margin-bottom: 20px;" class="ui huge header">Sports</div>
     <hr>
+    <div class="row text-center" style="display: flex; flex-wrap: wrap;">
     <% sortedCampgrounds.forEach(function(camp){ %>
-            <div class="row text-center" style="display: flex; flex-wrap: wrap;">
-               
-                
                 <% if(network.run(camp.title)=="sports"){ %>
                     <% if(camp.isApproved){ %>
-                    
                         <div class="col-md-3 col-sm-12">
                             <div class="thumbnail">
                                 <img style="height: 300px;" class="photu" src=" <%= camp.image %> ">
