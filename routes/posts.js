@@ -17,7 +17,7 @@ const trainingData = data.map(item => ({
 }));
 
 network.train(trainingData, {
-    iterations: 1000
+    iterations: 500
 });
 
 var storage = multer.diskStorage({
