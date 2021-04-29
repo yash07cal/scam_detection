@@ -83,13 +83,20 @@
     width:50%;
 }
 
-.home:hover {
+.navbar-default .home:hover {
     cursor: default;
     background: #ebebe6;
 }
 
+.navbar{
+    border-radius: 0px;
+}
+
+.ui.menu{
+    border-radius: 0px;
+}
+
 img.photu{
-    
     min-height: 200px;
 }
 
@@ -114,6 +121,10 @@ img.photu{
 }
 
 .ui.icon.input>input{padding-right:0!important}
+
+.ui.input>input{
+    border-radius: 0px;
+}
 
 .ui.inverted.menu.item{
     margin-right: 10%;

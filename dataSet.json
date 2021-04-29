@@ -1,37 +1,42 @@
 [
 { 
-    "title": "US to attack on china!!" ,
-    "category": "International" 
+    "title": "US to attack on china" ,
+    "category": "world" 
     
 },
     
 {
     "title": "US to export vaccine to india." ,
-    "category": "International"        
+    "category": "world"        
 },
 
 {
-    "title": "US to export vaccine raw material!!" ,
-    "category": "International"        
+    "title": "US to export vaccine raw material" ,
+    "category": "world"        
 },
 
 {
-    "title": "US will be a great friend in need to india." ,
-    "category": "International"        
+    "title": "US will be a great friend in need to india" ,
+    "category": "world"        
 },
 
 {
-    "title": "what a knock!!" ,
+    "title": "us supports india in this crisis" ,
+    "category": "world"        
+},
+
+{
+    "title": "what a knock" ,
     "category": "sports"        
 },
 
 {
-    "title": "Rallies being held despite COVID!" ,
+    "title": "Rallies being held despite COVID" ,
     "category": "India"        
 },
 
 {
-    "title": "kohli's knock helps, india beats aus in  2nd ODI." ,
+    "title": "kohli's knock helps, india beats aus in  2nd ODI" ,
     "category": "sports"        
 },
 
@@ -57,7 +62,7 @@
 
 {
     "title": "US always backstabs india" ,
-    "category": "international"        
+    "category": "world"        
 },
 
 {
@@ -82,11 +87,11 @@
 
 {
     "title": "Immediately sending whole series of help that India needs: US",
-    "category": "international"
+    "category": "world"
 },
 
 {
     "title": "As US begins to exit Afghanistan, govt staffers ordered out of Kabul",
-    "category": "international"
+    "category": "world"
 }
 ]

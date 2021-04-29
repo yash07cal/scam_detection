@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <% var sortedCampgrounds = campgrounds.slice().sort((a, b) => b.created.getTime() - a.created.getTime()); var x= []; %>
     <% sortedCampgrounds.forEach(function(camp){ %>
-    <%  if(network.run(camp.title)=="International"){ x.push(camp.title);};})%>
+    <%  if(network.run(camp.title).toLowerCase() =="world"){ x.push(camp.title);};})%>
     <% if(x.length === 0){ %>
     <div style="text-align: center;" class="ui huge header">No news yet</div>
     <% }else{ %>

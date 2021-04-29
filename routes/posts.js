@@ -17,7 +17,7 @@ const trainingData = data.map(item => ({
 }));
 
 network.train(trainingData, {
-    iterations: 300
+    iterations: 2000
 });
 
 var storage = multer.diskStorage({
@@ -42,7 +42,7 @@ cloudinary.config({
 });
   
 
-    
+//==================================================================================================================================================================== 
 //INDEX ROUTE 
 router.get("/", function(req, res){
     
@@ -71,6 +71,8 @@ router.get("/", function(req, res){
     
 });
 
+
+//==================================================================================================================================================================== 
 
 // ADD NEW CAMPGROUNDS
 router.get("/new",middleware.isLoggedIn, function(req, res) {
@@ -124,6 +126,8 @@ router.post("/", middleware.isLoggedIn, upload.single("imgdevice"), function(req
     });
 
 
+//==================================================================================================================================================================== 
+
 // SHOW 
 router.get("/:id", function(req, res) {
     Post.findById(req.params.id).populate("comments").exec(function(err, foundPost){
@@ -160,6 +164,22 @@ router.get("/category/sports", function(req, res) {
                     }
             });
 });
+
+router.get("/category/india", function(req, res) {
+    
+    Post.find({}, function(err, allPosts){
+                if(err){
+                        console.log(err);
+                    }else{
+                        res.render("posts/india", {campgrounds: allPosts, network: network});
+                        
+                    }
+            });
+});
+
+
+
+//==================================================================================================================================================================== 
 
 // EDIT CAMPGROUND ROUTE
 router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
