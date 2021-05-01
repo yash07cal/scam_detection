@@ -20,7 +20,7 @@
                                 <div class="caption">
                                    <h3><%= camp.title %></h3>
                                 </div>
-                                <% if(camp.isScam){ %><header style="background: red; color: black; padding: 3px 3px;"><i class="exclamation triangle icon"></i> scaMDetected</header> <% } %>
+                                <% if(camp.isScam){ %><header style="background: red; color: black; padding: 3px 3px;"><i class="exclamation triangle icon"></i> scaMDetected</header> <% }else{ %><header style="background: green; color: black; padding: 3px 3px;"><i class="thumbs up icon"></i> Verified</header><% }%>
                                 <hr style="margin: 3px 0">
                                 <% var dateUTc = new Date(camp.created); %>
                                 <% var dateUTC = dateUTc.getTime(); %>

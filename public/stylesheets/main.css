@@ -4,12 +4,12 @@
  #dabba{
      width: 60%;
  }
-#spann{
-    margin-left: 30%;
-}
- #sspan{
-     margin-left: 30%;
- }
+/*#spann{*/
+/*    margin-left: 26%;*/
+/*}*/
+/* #sspan{*/
+/*     margin-left: 26%;*/
+/* }*/
  #mb{
     display: block;
 }
@@ -24,12 +24,12 @@
      width: 90%;
  }
  
- #spann{
-     margin-left: 24%;
- }
-  #sspan{
-     margin-left: 24%;
- }
+ /*#spann{*/
+ /*    margin-left: 24%;*/
+ /*}*/
+ /* #sspan{*/
+ /*    margin-left: 24%;*/
+ /*}*/
 #mb{
     display: block;
 }
