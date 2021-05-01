@@ -19,14 +19,14 @@
                     <div class="container" style="margin-bottom: 10px;">
                         <span id="spann" class="spann">Feedback:</span> 
                         <div style="border: 1px solid black; width: 20%; margin: 0 auto; border-radius: 3px;">
-                            <p style="text-align: center; width: <%= Math.abs(feedback) * 20 %>%; background: green; color: rgba(0,0,0,0.5);">+ve<%= Math.abs(feedback) * 20 %>%</p>
+                            <p style="text-align: center; width: <%= Math.abs(feedback) * 100 %>%; background: green; color: rgba(0,0,0,0.5);"><%= Math.abs(feedback) * 100 %>% +ve</p>
                         </div>
                     </div>
                     <% }else if(feedback<0){ %>
                         <div class="container" style="margin-bottom: 10px;">
                             <span id="sspan" class="spann">Feedback:</span>
                         <div style="border: 1px solid black; width: 20%; margin: 0 auto; border-radius: 3px;">
-                            <p style="text-align: center; width: <%= Math.abs(feedback) * 20 %>%; background: red; color: rgba(0,0,0,0.5);">-ve<%= Math.abs(feedback) * 20 %>%</p>
+                            <p style="text-align: center; width: <%= Math.abs(feedback) * 100 %>%; background: red; color: rgba(0,0,0,0.5);"><%= Math.abs(feedback) * 100 %>% -ve</p>
                         </div>
                     </div>
                     <% } %>

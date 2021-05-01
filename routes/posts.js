@@ -142,13 +142,17 @@ router.get("/:id", function(req, res) {
             console.log(err);
             res.redirect("back");
         } else{
-            var n = 0, x = 0;
+            var x=0, n=0;
             foundPost.comments.forEach(function(comment){
                var s = (sent.analyze(comment.text));
-               n += s.score;
-               x += s.tokens.length;
+               if(s.comparative >0){
+                    x+= 1;
+               }else{
+                   n+= -1;
+               }
             });
-            var feedback = (n/x).toFixed(1);
+            var com = foundPost.comments.length;
+            var feedback = ((x + n)/com).toFixed(1);;
             res.render("posts/show", {campground: foundPost, feedback: feedback});
         }       
     });
