@@ -4,6 +4,7 @@ var express    = require("express"),
     User       = require("../models/user"),
     multer     = require("multer"),
     brain      = require('brain.js'),
+    Sentiment  = require('sentiment'),
     middleware = require("../middleware");
     
 
@@ -17,8 +18,13 @@ const trainingData = data.map(item => ({
 }));
 
 network.train(trainingData, {
-    iterations: 300
+    iterations: 400
 });
+
+const run = network.toFunction();
+
+ 
+var sent = new Sentiment();
 
 var storage = multer.diskStorage({
   filename: function(req, file, callback) {
@@ -55,7 +61,7 @@ router.get("/", function(req, res){
                     console.log(err);
                     }else{
                         
-                        res.render("posts/index", {campgrounds: allPosts, network: network});
+                        res.render("posts/index", {campgrounds: allPosts,  run: run, sent: sent});
                     }
             });
     } else{
@@ -64,7 +70,7 @@ router.get("/", function(req, res){
                 if(err){
                         console.log(err);
                     }else{
-                        res.render("posts/index", {campgrounds: allPosts, network: network});
+                        res.render("posts/index", {campgrounds: allPosts, sent: sent, });
                     }
             });
     }
@@ -136,7 +142,14 @@ router.get("/:id", function(req, res) {
             console.log(err);
             res.redirect("back");
         } else{
-             res.render("posts/show", {campground: foundPost});
+            var n = 0, x = 0;
+            foundPost.comments.forEach(function(comment){
+               var s = (sent.analyze(comment.text));
+               n += s.score;
+               x += s.tokens.length;
+            });
+            var feedback = (n/x).toFixed(1);
+            res.render("posts/show", {campground: foundPost, feedback: feedback});
         }       
     });
 });

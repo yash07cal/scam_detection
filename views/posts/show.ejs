@@ -1,5 +1,11 @@
 <%- include('../partials/header') -%>
-
+<style>
+    .spann{
+        float: left;
+        margin-left: 33%;
+        margin-right: 10px;
+    }
+</style>
 
 
 <div class="container">
@@ -8,24 +14,43 @@
             <% if(campground.comments.length==0){ %>
                     <h1 style="text-align: center;">NO COMMENTS YET!!</h1>
             <% } else{ %>
-                    <% campground.comments.forEach(function(comment){ %>
-                            <strong><%=comment.user.username%></strong>
-                            <% if(currentUser && comment.user.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>    
-                                <div class="pull-right">
-                                    <a class="btn btn-xs btn-warning" href="/posts/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit</a>
-                                    <form id="delete" action="/posts/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                                        <button class="btn btn-xs btn-danger">Delete</button>
-                                    </form>
-                                </div>
-                            <% }%>
-                            <p> 
-                                <%=comment.text%>
-                            </p>
-                            <hr id="hrr">
-                <% });} %>
-                <div class="text-center">
-                    <a class="btn btn-success" href="/posts/<%= campground._id %>/comments/new ">Add New Comment</a>
-                </div>
+                    <% if(feedback>0){ %>
+                    <div class="container" style="margin-bottom: 10px;">
+                        <span id="spann" class="spann">Feedback:</span> 
+                        <div style="border: 1px solid black; width: 20%; margin: 0 auto; border-radius: 3px;">
+                            <p style="text-align: center; width: <%= Math.abs(feedback) * 20 %>%; background: green; color: rgba(0,0,0,0.5);">+ve<%= Math.abs(feedback) * 20 %>%</p>
+                        </div>
+                    </div>
+                    <% }else if(feedback<0){ %>
+                        <div class="container" style="margin-bottom: 10px;">
+                            <span id="sspan" class="spann">Feedback:</span>
+                        <div style="border: 1px solid black; width: 20%; margin: 0 auto; border-radius: 3px;">
+                            <p style="text-align: center; width: <%= Math.abs(feedback) * 20 %>%; background: red; color: rgba(0,0,0,0.5);">-ve<%= Math.abs(feedback) * 20 %>%</p>
+                        </div>
+                    </div>
+                    <% } %>
+                    <hr>
+                            <% campground.comments.forEach(function(comment){ %>
+                                    <strong><%=comment.user.username%></strong>
+                                    <% if(currentUser && comment.user.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>    
+                                        <div class="pull-right">
+                                            <form id="delete" action="/posts/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                                <button class="btn btn-xs btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    <% }%>
+                                    <p> 
+                                        <%=comment.text%>
+                                    </p>
+                                    <hr id="hrr">
+                        <% });} %>
+                        <form style="margin: 5px 0;" class="form-group text-center" action="/posts/ <%= campground._id %>/comments" method="POST">
+                                            <div style="margin: 0;" class="form-group">
+                                                <input style="border: none; outline: none; width: 70%; float: left; height: 20px;" class="form-" type="text" placeholder="Add a comment.." name="comment[text]" required>
+                                                <button style="background: none; border: none; outline: none; padding-top: 0; line-height: 100%; color: #e6cbd4; width: 30%; padding-right: 2px; text-align: right;" class="btn btn-sm btn-success">POST</button>
+                                            </div>
+                                        </form>
+                                    <hr style="margin-top: 2px;">
         </div>
     </div>
 </div>

@@ -4,6 +4,12 @@
  #dabba{
      width: 60%;
  }
+#spann{
+    margin-left: 30%;
+}
+ #sspan{
+     margin-left: 30%;
+ }
  #mb{
     display: block;
 }
@@ -13,9 +19,16 @@
 }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
  #dabba{
      width: 90%;
+ }
+ 
+ #spann{
+     margin-left: 26%;
+ }
+  #sspan{
+     margin-left: 26%;
  }
 #mb{
     display: block;
