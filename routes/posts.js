@@ -18,7 +18,7 @@ const trainingData = data.map(item => ({
 }));
 
 network.train(trainingData, {
-    iterations: 400
+    iterations: 300
 });
 
 const run = network.toFunction();
